@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: blog-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npx prisma generate && npx prisma db push
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: blog-postgres
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: blog-postgres
+    plan: free
+    databaseName: bolog_website
+    user: blog_user

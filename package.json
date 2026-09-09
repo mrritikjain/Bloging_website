@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "prisma generate"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.0",
